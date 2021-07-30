@@ -40,6 +40,7 @@
                 app:layout_constraintEnd_toEndOf="parent">
 
                 <ImageView
+                    android:id="@+id/iv_dish_image"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_200sdp"
                     android:background="@color/dish_image_background"
