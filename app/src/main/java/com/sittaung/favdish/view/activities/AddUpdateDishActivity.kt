@@ -16,6 +16,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import com.bumptech.glide.Glide
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.MultiplePermissionsReport
 import com.karumi.dexter.PermissionToken
@@ -142,7 +143,11 @@ class AddUpdateDishActivity : AppCompatActivity(), View.OnClickListener {
             if (requestCode == CAMERA) {
                 data?.extras?.let {
                     val thumbnail: Bitmap = data.extras!!.get("data") as Bitmap
-                    binding.ivDishImage.setImageBitmap(thumbnail)
+
+                    Glide.with(this)
+                        .load(thumbnail)
+                        .centerCrop()
+                        .into(binding.ivDishImage)
 
                     binding.ivAddDishImage.setImageDrawable(
                         ContextCompat.getDrawable(
@@ -157,7 +162,10 @@ class AddUpdateDishActivity : AppCompatActivity(), View.OnClickListener {
                 data?.let {
                     val selectedPhotoUri = data.data
 
-                    binding.ivDishImage.setImageURI(selectedPhotoUri)
+                    Glide.with(this)
+                        .load(selectedPhotoUri)
+                        .centerCrop()
+                        .into(binding.ivDishImage)
 
                     binding.ivAddDishImage.setImageDrawable(
                         ContextCompat.getDrawable(
