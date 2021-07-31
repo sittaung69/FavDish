@@ -10,5 +10,7 @@ class FavDishApplication : Application() {
         FavDishRoomDatabase.getDatabase(this@FavDishApplication)
     }
 
-    val repository by lazy { FavDishRepository(database.favDishDao()) }
+    val repository by lazy {
+        FavDishRepository(database.favDishDao())
+    }
 }
